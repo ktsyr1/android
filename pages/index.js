@@ -11,7 +11,9 @@ export default class Home extends Component {
 	}
 	// get  server side props 
 	static async getInitialProps({ query }) {
-		let { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/apps?p=${query.p || 0}`);
+
+		let { data } = await axios.get(`${process.env.NEXT_PUBLIC_API ||'/api'}/apps?p=${query.p || 0}`);
+
 		return { data }
 	}
 

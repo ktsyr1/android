@@ -10,7 +10,7 @@ export default class CategoriesPage extends Component {
     }
     // get  server side props
     static async getInitialProps({ query }) {
-        let { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/cat/${query.name}?p=${query.p || 0}`);
+        let { data } = await axios.get(`${process.env.NEXT_PUBLIC_API||'/api'}/cat/${query.name}?p=${query.p || 0}`);
         return { data, query }
     }
 

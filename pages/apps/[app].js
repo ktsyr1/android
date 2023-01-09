@@ -9,14 +9,14 @@ import AppBoxs from "components/apps/boxs";
 
 // get static paths for all apps
 export async function getStaticPaths() {
-    let { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/apps`);
+    let { data } = await axios.get(`${process.env.NEXT_PUBLIC_API ||'/api'}/apps`);
     let paths = data.apps.map(App => ({ params: { app: App.url } }))
     return { paths, fallback: true }
 }
 
 // get static props
 export async function getStaticProps(ctx) {
-    let { data: newData } = await axios.get(`${process.env.NEXT_PUBLIC_API}/apps/${encodeURI(ctx.params.app)}?v=${ctx.query?.v}`);
+    let { data: newData } = await axios.get(`${process.env.NEXT_PUBLIC_API||'/api'}/apps/${encodeURI(ctx.params.app)}?v=${ctx.query?.v}`);
     let versions = newData?.versions
     let data = { ...newData, ...versions[0], versions }
     return { props: { data, type: true }, revalidate: 10 * 60 }
