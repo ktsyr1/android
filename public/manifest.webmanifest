@@ -1,0 +1,31 @@
+{
+  
+  "dir": "rtl",
+  "lang": "ar",
+  "name": "Pesktop Android - بيسكتوب اندرويد",
+  "short_name": "pesktop",
+  "start_url": "/",
+  "scope": "/",
+  "background_color": "#91c8ff",
+  "theme_color": "#91c8ff",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./images/logo.png",
+      "sizes": "110x110",
+      "type": "image/png",
+      "purpose": "any maskable"
+    } ,{
+      "src": "./images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    } ,{
+      "src": "./images/logo.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    } 
+  ]
+} 

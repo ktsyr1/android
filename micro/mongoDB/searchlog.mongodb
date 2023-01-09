@@ -1,0 +1,2 @@
+use('android');     
+db.files.find({})

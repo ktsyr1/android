@@ -1,0 +1,133 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  /* margin-top: 3em; */
+  direction: rtl;
+  background-color: #fff;
+  /* font-family: "DroidArabicKufiRegular"; */
+  /* background-color: #eee; */
+  font-family: "Noto Kufi Arabic", sans-serif;
+}
+section {
+  min-height: 30rem;
+  max-width: 100rem;
+  margin: 70px auto 0;
+}
+a {
+  color: var(--colorUI) !important;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+nav {
+  display: flex;
+  background-color: #21282a;
+  -webkit-user-select: none;
+  user-select: none;
+  flex-direction: row;
+  width: 100%;
+  height: 65px;
+  top: 0;
+  z-index: 200;
+  position: fixed;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  padding: 0 50px;
+}
+.menu {
+  width: -webkit-fill-available;
+  max-width: 35rem;
+  margin: auto 30px;
+}
+.menu-item {
+  background-color: #01875f;
+  margin: 0;
+}
+.menu > a {
+  margin-right: 10px;
+}
+form :where(input, textarea) {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: 1px solid var(--colorUIX);
+  border-radius: 10px;
+  background: aliceblue;
+}
+.bg-dark {
+  background-color: var(--colorDarkX);
+}
+.w-full {
+  width: -webkit-fill-available;
+}
+.gellary-img-full {
+  position: fixed;
+  height: -webkit-fill-available !important;
+  top: 15%;
+  right: 0;
+  max-height: 500px;
+  left: 0;
+  margin: 0 auto !important;
+}
+.Alert {
+  min-width: 300px;
+  width: min-content;
+  margin: 0 auto;
+  color: #fff;
+  background-image: linear-gradient(90deg, var(--colorUI), var(--colorUIX));
+  max-width: 700px;
+  right: 0;
+  left: 0;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 5px 5px 10px #ddd;
+  margin: 0 auto;
+  z-index: 111;
+}
+.select {
+  cursor: pointer;
+  user-select: none;
+}
+.m-auto {
+  margin: 0 auto;
+}
+@media (min-width: 0px) and (max-width: 576px) {
+  .sm-w-auto {
+    width: 22rem;
+  }
+}
+th {
+  text-align: start !important;
+}
+form input,
+form textarea,
+form select {
+  background-color: #fff;
+  border-radius: 10px;
+  color: var(--colorUIX);
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 5px 5px 10px #ddd;
+  border: 1.1px solid;
+  width: -webkit-fill-available;
+}
+.br {
+  border-radius: 10px;
+  border: 1px solid;
+}
+.bor {
+  border-radius: 10px;
+}
+@media (min-width: 0) and (max-width: 850px) {
+  .mdd-none {
+    display: none !important;
+  }
+  .searchbtn.ss,
+  .mdd {
+    display: block !important;
+  }
+}
