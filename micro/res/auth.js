@@ -4,11 +4,11 @@ import { DBUser } from '../mongoDB/index.js';
 
 export default async function Auth(req, res, next) {
     let token = req.headers['token']
+
     if (token) {
         let sercet = await process.env.sercet
 
         try {
-
             let detoken = await jwt.verify(token, sercet)
             let user = await DBUser.findOne({ email: detoken.email, username: detoken.username })
             if (user) next()

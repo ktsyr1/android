@@ -37,7 +37,10 @@ export class AppServies {
         let { params } = req
         let app = await DBApps.findOne({ url: params.url }).select('-_id -keys -__v ')
         if (app) {
-            let versions = await DBFiles.find({ 'data.package': app?.package }).sort({ versionName: -1 }).select('-_id -__v   ')
+            let versions = await DBFiles
+                .find({ 'data.package': app?.package })
+                .sort({ 'data.versionName': -1 })
+                .select('-_id -__v   ')
             versions = versions.map(a => {
                 // new token for path 
                 var token = jwt.sign({ path: a.path, url: app.url, expiresIn: new Date().getTime() }, process.env.sercet)
@@ -78,14 +81,18 @@ export class AppServies {
         // console.log(JSON.parse(clientJSON))
         if (headers.referer === client) {
             let { token } = params
+            try {
 
-            let { expiresIn, path } = jwt.verify(token, sercet)
-            let out = expiresIn + 1000 * 60 * 60 * 24
+                let { expiresIn, path } = jwt.verify(token, sercet)
+                let out = expiresIn + 1000 * 60 * 60 * 24
 
-            if (out >= new Date().getTime()) {
-                res.download(path)
+                if (out >= new Date().getTime()) {
+                    res.download(path)
+                }
+                else res.redirect(`${client}/android/${decoded.url}`)
+            } catch (error) {
+                res.redirect(`${client}`)
             }
-            else res.redirect(`${client}/android/${decoded.url}`)
         } else res.redirect(client)
     }
 } 

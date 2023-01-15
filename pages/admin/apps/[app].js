@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { CloudUploadOutline } from "react-ionicons";
 import PageApp from "pages/apps/[app]";
 import Config from "lib/config";
-import { FormApp } from "components/apps/form";
+import { FormApp, Versions } from "components/apps/form";
 let Licon2 = '30px'
 import AppBoxs from "components/apps/boxs";
 
@@ -30,29 +30,29 @@ export default function AdminApp({ data: propsData, config }) {
         <div>
             <div className="box grid center">
                 {/*[ title , send ]*/}
-                <FormApp
-                    data={data}
-                    setChange={setChange}
-                    config={config}
-                    Send={(e) => {
-                        e.preventDefault()
-                        console.log(data.images);
-                        axios.put(`${process.env.NEXT_PUBLIC_API}/apps/${route.query.app}`, data, Config())
-                            .then(res => {
-                                Alert('تم حفظ التطبيق بنجاح')
-                                route.push('/admin/apps')
-                            })
-                    }}
-                />
+                <div>
+                    <FormApp
+                        data={data}
+                        setChange={setChange}
+                        config={config}
+                        Send={(e) => {
+                            e.preventDefault()
+                            console.log(data.images);
+                            axios.put(`${process.env.NEXT_PUBLIC_API}/apps/${route.query.app}`, data, Config())
+                                .then(res => {
+                                    Alert('تم حفظ التطبيق بنجاح')
+                                    route.push('/admin/apps')
+                                })
+                        }}
+                    />
+                    <Versions data={data.versions} config={config} />
+                </div>
                 <div className="w-15">
 
                     <AppBoxs.Title data={data} />
                     <AppBoxs.Gallery data={data} />
                     <AppBoxs.About data={data} />
-                    {/* <AppBoxs.Info data={data} /> */}
                     <AppBoxs.Versions data={data} />
-
-                    {/* <PageApp data={data} /> */}
                 </div>
             </div>
         </div>

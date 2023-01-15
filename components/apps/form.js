@@ -4,8 +4,10 @@ import { Input } from "theme/forms"
 import Config from "lib/config"
 import { TitleBtn } from "components/apps/boxs"
 import { useState } from "react"
-import { BuildOutline, DownloadOutline } from "react-ionicons"
+import { BuildOutline, DownloadOutline, TrashOutline } from "react-ionicons"
 import { useRouter } from "next/router"
+import { version } from "nprogress"
+import { Popconfirm } from "antd"
 let Licon = '30px'
 
 export function FormApp({ data, setChange, config, Send, test }) {
@@ -20,14 +22,25 @@ export function FormApp({ data, setChange, config, Send, test }) {
         return url
     }
     let [urls, setUrls] = useState([])
-    function restlinks(e) {
+    async function restlinks(e) {
         e.preventDefault()
         let links = [
             BuildUrl(data.name),
             BuildUrl(data.package),
         ]
-        setChange({ target: { name: 'title', value: `تحميل تطبيق ${data.name} برابط مباشر` } })
+        setChange({ target: { name: 'title', value: `تحميل تطبيق ${data.name} ${data?.mode} برابط مباشر` } })
         setUrls(links)
+        try {
+            let URL = `${process.env.NEXT_PUBLIC_API}/text-ai`
+
+            let { data: des } = await axios.post(URL, { text: `شرح عن برنامج ${data.name}`, length: 200 }, config)
+            setChange({ target: { name: 'des', value: des.data } })
+            let { data: about } = await axios.post(URL, { text: `ما هو برنامج ${data.name} وما هي ميزاته وطريقة استخدامه`, length: 1000 }, config)
+            setChange({ target: { name: 'about', value: about.data } })
+
+        } catch (error) {
+
+        }
     }
     async function scraping(e) {
         e.preventDefault()
@@ -123,7 +136,7 @@ export function FormApp({ data, setChange, config, Send, test }) {
                 <Input classbox={Type(['new', 'edit'])} name="category" placeholder="category" defaultValue={data?.category} />
 
                 <div className={'box col' + Type(['update', 'new', 'edit'])}>
-                    <select name='mode' placeholder={'تحديد المود'} onChange={onSelect}>
+                    <select name='mode' placeholder={'تحديد المود'} defaultValue={data?.mode} onChange={onSelect}>
                         {['pro', 'premium', 'no ads', 'vip', "other"].map(mode => (
                             <option value={mode} key={mode}  >{mode}</option>
                         ))}
@@ -144,5 +157,30 @@ export function FormApp({ data, setChange, config, Send, test }) {
                 </div>
             </div>
         </form >
+    )
+}
+export function Versions({ data: propsData, config }) {
+    let { reload } = useRouter()
+    let [data, setData] = useState(propsData)
+
+    return (
+        <div className="box col">
+            {data?.map((version, i) => {
+                let query = version.data
+                let deleteOne = async () => {
+                    await axios.delete(`${process.env.NEXT_PUBLIC_API}/versions?v=${query.versionName}&pa=${query.package}`, config)
+                    let filter = data.filter(a => a.data.versionName !== query.versionName)
+                    setData(filter);
+                }
+                return (
+                    <div className='ui aitem m box space center' key={i}>
+                        <p> {query.versionName}</p>
+                        <Popconfirm title={"حذف هده العنصر"} onConfirm={() => deleteOne()}>
+                            <TrashOutline title={'Delete'} color={'#00000'} height="25px" width="25px" />
+                        </Popconfirm>
+                    </div>
+                )
+            })}
+        </div>
     )
 }

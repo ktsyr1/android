@@ -15,6 +15,9 @@ import AppsServies, { AppServies } from './apps.js'
 import Images from "./image.js";
 import GooglePlay from "./googleplay.js";
 import SearchEngine from "./app.js";
+import DeleteVersions from "./versions.js";
+import { Configuration, OpenAIApi } from "openai"
+
 //  end imported
 // tests  app
 
@@ -55,6 +58,32 @@ app.route('/search')
 app.use('/image', Images)
 
 app.route('/auth')
+    .get(Auth, (req, res) => res.json({ ok: true }))
     .put(LogIn) // add user authentication
+app.route('/versions')
+    .delete(Auth, DeleteVersions)
 
+app.route('/text-ai')
+    .post(Auth, TextAi)
+async function TextAi(req, res) {
+    let { text,length =200} = req.body
+
+    const configuration = new Configuration({
+        apiKey: process.env.OPENAI_API_KEY,
+    });
+    const openai = new OpenAIApi(configuration);
+
+    const { data } = await openai.createCompletion({
+        model: "text-davinci-003",
+        prompt: text,
+        temperature: 0.17,
+        max_tokens: length,
+        top_p: 1,
+        frequency_penalty: 0.0,
+        presence_penalty: 0.6,
+        stop: [" Human:", " AI:"],
+    });
+    res.json({ data: data.choices[0].text })
+
+}
 export default app;

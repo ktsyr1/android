@@ -57,20 +57,21 @@ export function GroupCard({ data }) {
 }
 export function Category({ data, link = false }) {
     let Licon = '20px'
-    let { category: Cat } = data
-    let [Content, setContent] = useState(<p className="R-m"> {Cat} </p>)
+    let { category} = data
+    let [Content, setContent] = useState(<p className="R-m"> {category} </p>)
+    let [Link, setLink] = useState(link)
 
-    useEffect(() => {
-        if (link) {
-            if (typeof Cat === 'object') {
-                let html =
-                    Cat?.map(cat =>
-                        <Link href={`/apps/cat/${cat}`} key={cat}><a>{cat}</a></Link>
-                    )
-                setContent(html)
-            } else setContent(<p>{Cat}</p>)
-        }
-    })
+    // useEffect(() => {
+    //     if (Link) {
+    //         if (typeof category === 'object') {
+    //             let html =
+    //             category?.map(cat =>
+    //                     <Link href={`/apps/cat/${cat}`} key={cat}><a>{cat}</a></Link>
+    //                 )
+    //             setContent(html)
+    //         } else setContent(<p>{category}</p>)
+    //     }
+    // },[setContent,Link,category])
     return (
         <div className="f-md box j j-start aitem" style={{ color: 'var(--colorUIX)', margin: '10px 0' }} >
             <PricetagsOutline color={'#000'} height={Licon} width={Licon} cssClasses='box aitem' />

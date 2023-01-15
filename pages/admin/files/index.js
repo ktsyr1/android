@@ -76,14 +76,9 @@ export default function Admin({ data: dataProps, config }) {
                         {
                             title: 'الاجرات', dataIndex: '',
                             render: (_, record) => data.length >= 1 ? (
-                                <div className="box row" >
-                                    <div style={{ margin: '0 10px' }}  >
-                                        <PencilOutline title={'Delete'} color={'#00000'} height="25px" width="25px" />
-                                    </div>
                                     <Popconfirm title={"حدف هده العنصر"} onConfirm={() => deleteOne(record.name)}>
                                         <TrashOutline title={'Delete'} color={'#00000'} height="25px" width="25px" />
                                     </Popconfirm>
-                                </div>
                             ) : null
                         },
                     ]}

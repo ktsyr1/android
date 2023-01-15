@@ -5,7 +5,7 @@ const app = express()
 import DB from "./mongoDB/index.js"
 import cors from "cors"
 import morgan from "morgan"
-app.use(cors())
+app.use(cors({credentials: true, origin: '*'}))
 
 app.use(morgan('{:method} ":url" <<{:req[body]}>> [:status]==> :response-time ms'))
 app.use(express.json());

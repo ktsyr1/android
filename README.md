@@ -29,3 +29,31 @@ class Nasb {
 
 }
 ```
+## web development
+- stacks frontend
+    - react
+    - angular
+    - vue
+    - wordpress themes
+- stacks backend
+    - nodejs (expressjs)
+    - nodejs (nestjs)
+    - python  (flask)
+    - python (django)
+    - php (wordpress)
+    - php (larvel)
+    - go (frish)
+    - c# (asp.net)
+    - java (Spring)
+    - Ruby on Rails
+- fullstacks
+    - MERN
+    - MEVN
+    - MEAN
+    - PERN
+    - LAMP
+    - ASP.NET
+    - Ruby on Rails
+    - django py
+    - flask py
+

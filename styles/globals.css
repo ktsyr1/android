@@ -2,12 +2,13 @@ html,
 body {
   padding: 0;
   margin: 0;
-  /* margin-top: 3em; */
   direction: rtl;
   background-color: #fff;
-  /* font-family: "DroidArabicKufiRegular"; */
-  /* background-color: #eee; */
-  font-family: "Noto Kufi Arabic", sans-serif;
+  font-family: "myFirstFont", sans-serif !important;
+}
+@font-face {
+  font-family: myFirstFont;
+  src: url(/fonts/Droid.Arabic.Kufi.ttf);
 }
 section {
   min-height: 30rem;
