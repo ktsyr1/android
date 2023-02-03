@@ -154,7 +154,33 @@ yellow اصفر
 yes نعم
 zero صفر
 week  اسبوع
-
+Allow سماح
+Accept  قبول
+cost الثمن
+down اسفل
+drink شرب
+false خطاء
+left يسار
+size حجم
+very جدا
+answer اجابة
+always دائما
+bank بنك
+bread خبز
+by بواسطة
+black اسود
+blood دم
+blue ازرق
+catch إمساك
+Push دفع
+Delete حذف
+Remove ازالة
+Remote تحكم عن
+Control تحكم
+Delete حذف
+Remove ازالة
+Remote تحكم عن
+Control تحكم
 # الضمائر
 I
 you
@@ -164,26 +190,9 @@ he
 we
 <!-- it -->
 # كلمات عامة
-allow قبول 
-cost ثمن
-down اسفل
-drink يشرب
-false خطاء
-left يسار
 pay دفع
-size حجم
-very جدا
-إجابة، يجيب answer
-دائماً always
-بنك bank
-خبز bread
 سرير_فراش bed
 يحترق_يشتعل burn
 مشغول busy
-بجانب_بواسطة by
 طائر bird
-أسود black
-دم blood
-أزرق blue
-يمسك-يقبض على catch
 زاوية corner

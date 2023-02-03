@@ -56,6 +56,8 @@ export default function PageApp({ data: propsData, type = false }) {
                     />
                     <div className="box col m" style={{ maxWidth: '50em' }}>
                         <AppBoxs.Title data={data} type={type} />
+                        <AppBoxs.Share title={data.title} />
+
                         <AppBoxs.Gallery data={data} />
                         <AppBoxs.About data={data} />
                     </div>

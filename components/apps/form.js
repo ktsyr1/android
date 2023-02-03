@@ -52,6 +52,7 @@ export function FormApp({ data, setChange, config, Send, test }) {
             Object
                 .keys(ScrapData)
                 .map(key => setChange({ target: { name: key, value: ScrapData[key] } }))
+            setChange({ target: { name: 'images', value: ScrapData?.images } })
         } catch (error) { document.querySelector('[name=images]').click() }
     }
     function setUrl(url) {

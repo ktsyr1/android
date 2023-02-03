@@ -6,8 +6,8 @@ import 'styles/theme@v2.sass'
 
 import NProgress from 'nprogress'; //nprogress module 
 
-import 'nprogress/nprogress.css';  
-import Router from 'next/router';
+import 'nprogress/nprogress.css';
+import Router, { useRouter } from 'next/router';
 
 NProgress.configure({
     showSpinner: true,
@@ -24,7 +24,12 @@ Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
-    return (
+    let { route } = useRouter()
+    if (route === "/apps/[app]/embed") {
+        return (
+            <Component {...pageProps} />
+        )
+    } else return (
         <Layout>
             <Component {...pageProps} />
         </Layout>

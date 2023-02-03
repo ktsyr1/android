@@ -1,10 +1,11 @@
 import MarkdownIt from 'markdown-it'
-import { CalendarOutline, ChevronDownOutline, ChevronUpOutline, CopyOutline, CubeOutline, InvertModeOutline, LogoAndroid, PricetagsOutline, ServerOutline } from "react-ionicons";
-import { useState } from "react";
+import { CalendarOutline, ChevronDownOutline, ChevronUpOutline, CodeOutline, CopyOutline, CubeOutline, InvertModeOutline, LogoAndroid, LogoFacebook, LogoTwitter, LogoWhatsapp, PricetagsOutline, ServerOutline } from "react-ionicons";
+import { useEffect, useState } from "react";
 import usesSdk from '/lib/uses-sdk.json'
 import { Category } from "./card";
 import Image from "next/image";
 import { MyLoder } from "lib";
+import { useRouter } from 'next/router';
 export default class AppBoxs {
     /**
     * 
@@ -44,13 +45,50 @@ export default class AppBoxs {
      * @param {images[]} AppGallery 
      * @returns {AppGallery}
      */
-
-    static Gallery({ data }) {
-        let box = 'box gellary  scroll sm-w-14 top-4 w-full xl-w-30 xxl-w-30 id-345 ' // lg-w-30
-        let{images} = data
+    static Share({ title, url = '' }) {
+        let route = useRouter()
+        url = process.env.NEXT_PUBLIC_DOMAIN + route.asPath
+        let [embeded, setEmbeded] = useState(false)
+        function Copy() {
+            var copyText = document.querySelector("textarea.embeded")
+            copyText.select();
+            copyText.setSelectionRange(0, 99999)
+            document.execCommand("copy")
+        }
         return (
-            <div className={box} >
-                {typeof images === 'object'? images?.map((src, i) => {
+            <div className='box row p m aitem box j-end j mb-0 pb-0'>
+                <p>مشاركة عبر </p>
+                <a href={`whatsapp://send?text= ${title} ${url}`} data-action="share/whatsapp/share" target="_blank" title="Share on whatsapp">
+                    <LogoWhatsapp color={'#03c78c'} width={'30px'} height={'30px'} />
+                </a>
+                {/* <a href={`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${title}`} target="_blank" title="Share on Facebook">
+                    <LogoFacebook color={'#03c78c'} width={'30px'} height={'30px'} />
+                </a> */}
+                <a href={`https://twitter.com/share?url=${url}&text=${title}`} target="_blank" title="Share on Twitter">
+                    <LogoTwitter color={'#03c78c'} width={'30px'} height={'30px'} />
+                </a>
+                <div className='mx-2 ' onClick={() => setEmbeded(true)} >
+                    <CodeOutline color={'#03c78c'} width={'30px'} height={'30px'} />
+                </div>
+                {embeded ?
+                    <div className='box col ui pop'>
+                        <textarea className='ltr h-9 embeded' defaultValue={`<iframe src='${url}/embed' class="embed" allow="fullscreen"  height="220px" width="390px" style='border:0' />`} />
+                        <div className='box row ltr'>
+                            <button className='btn w-7 j m' onClick={Copy} >نسخ</button>
+                            <div className='btn diseble w-7 j m' onClick={() => setEmbeded(false)} >الغاء</div>
+                        </div>
+                    </div> : ''
+                }
+
+            </div>
+        )
+    }
+    static Gallery({ data }) {
+        let box = 'box gellary  scroll sm-w-14 w-full xl-w-30 xxl-w-30' // lg-w-30
+        let { images } = data
+        return (
+            <div className={box} style={{ maxWidth: '50em' }} >
+                {typeof images === 'object' ? images?.map((src, i) => {
                     let img = MyLoder(src)
                     return <img
                         // loader={MyLoder}
@@ -60,8 +98,7 @@ export default class AppBoxs {
                         layout='fill'
                         className='h-10 m R-p ui'
                         key={i} />
-                }):''}
-                <style jsx>{`.id-345 {max-width: 50em; margin-top: 2rem}`}</style>
+                }) : ''}
             </div>
         )
     }
