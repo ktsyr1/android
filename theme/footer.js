@@ -8,7 +8,7 @@ export default function Footer() {
         <footer className=" sh box col space aitem" style={{ backgroundColor: 'var(--colorDarkX)', color: 'var(--colorBGB)' }}>
             <div className="box grid w-full space sm-p md-p-5 p-5">
                 <Lists
-                    title='روابط سريعة'
+                    title='روابط سريعة.'
                     data={[
                         { title: 'الرئيسية', url: '/' },
                         { title: 'اتصل بنا', url: 'https://pesktop.com/contact' },
