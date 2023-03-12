@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { FormApp } from "components/apps/form";
-import AppBoxs from "components/apps/boxs";
+import { Title, About, Info } from "components/apps/boxs";
 
 export async function getServerSideProps(ctx) {
     return await AuthServerSide(ctx, '/admin/files',
@@ -43,9 +43,9 @@ export default function Admin({ data: propsData, config }) {
                         }
                     }} />
                 <div className="w-15">
-                    <AppBoxs.Title data={data} cat={false} />
-                    <AppBoxs.About data={data} />
-                    <AppBoxs.Info data={data} />
+                    <Title data={data} cat={false} />
+                    <About data={data} />
+                    <Info data={data} />
                 </div>
             </div>
         </div >

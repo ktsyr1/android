@@ -3,8 +3,8 @@ import axios, { Axios } from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useRouter } from "next/router"
 import Head from 'next/head'
-import Image from 'next/image';
-import { MyLoder } from 'lib';
+// import Image from 'next/image';
+// import { MyLoder } from 'lib';
 import { CopyOutline, ServerOutline } from 'react-ionicons';
 
 
@@ -45,14 +45,14 @@ export default function Embed({ data }) {
             </Head>
             <div style={{ width: 80, height: 80 }}>
 
-                <Image
+                {/* <Image
                     src={data?.icon}
                     loader={MyLoder}
                     width={80}
                     height={80}
 
                     alt={'ايقونة تطبيق ' + data?.name}
-                />
+                /> */}
             </div>
             <div className='box col m'>
                 <h1 style={{ fontSize: 'larger', padding: '10px', margin: '0' }}>
@@ -63,7 +63,7 @@ export default function Embed({ data }) {
                 <Icon title={version?.size} Tag={ServerOutline} />
 
                 <a
-                    href={`${process.env.NEXT_PUBLIC_API.replace('/api', '')}/download/${version.path}`}
+                    href={`${process.env.NEXT_PUBLIC_API.replace('/api', '')}/download/${version?.path}`}
                     className="btn w-12 sm-w-full sh"
                     style={{ fontSize: 'larger' }}
                 >تحميل مباشر </a>

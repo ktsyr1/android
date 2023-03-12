@@ -6,10 +6,16 @@ import { useRouter } from "next/router";
 import { CloudUploadOutline } from "react-ionicons";
 import PageApp from "pages/apps/[app]";
 import Config from "lib/config";
-import { FormApp, Versions } from "components/apps/form";
+import Formy, { FormApp, Versions as Versions2 } from "components/apps/form";
 let Licon2 = '30px'
-import AppBoxs from "components/apps/boxs";
-
+import {
+    Title,
+    Share,
+    Gallery,
+    About,
+    Info,
+    Versions
+} from "components/apps/boxs";
 export async function getServerSideProps(ctx) {
     return await AuthServerSide(ctx, '/admin/apps', async (res) => {
         let URL = `${res.NEXT_PUBLIC_API}/apps/${encodeURI(res.query.app)}`
@@ -45,14 +51,14 @@ export default function AdminApp({ data: propsData, config }) {
                                 })
                         }}
                     />
-                    <Versions data={data.versions} config={config} />
+                    <Versions2 data={data.versions} config={config} />
                 </div>
                 <div className="w-15">
 
-                    <AppBoxs.Title data={data} />
-                    <AppBoxs.Gallery data={data} />
-                    <AppBoxs.About data={data} />
-                    <AppBoxs.Versions data={data} />
+                    <Title data={data} />
+                    <Gallery data={data} />
+                    <About data={data} />
+                    <Versions data={data} />
                 </div>
             </div>
         </div>

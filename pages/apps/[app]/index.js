@@ -4,8 +4,13 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion"
 import SEO from "lib/SEO";
 import { useRouter } from "next/router";
-import AppTitle, { AppAbout, AppGallery, AppInfo, AppVersions } from "components/apps/boxs"
-import AppBoxs from "components/apps/boxs";
+import {
+    Title,
+    Gallery,
+    About,
+    Info,
+    Versions
+} from "components/apps/boxs";
 
 // get static paths for all apps
 export async function getStaticPaths() {
@@ -55,16 +60,16 @@ export default function PageApp({ data: propsData, type = false }) {
                         image={icon}
                     />
                     <div className="box col m" style={{ maxWidth: '50em' }}>
-                        <AppBoxs.Title data={data} type={type} />
-                        <AppBoxs.Share title={data.title} />
+                        <Title data={data} type={type} />
+                        {/* <Share title={data.title} /> */}
 
-                        <AppBoxs.Gallery data={data} />
-                        <AppBoxs.About data={data} />
+                        <Gallery data={data} />
+                        <About data={data} />
                     </div>
                     {/* [info ,varsions] */}
                     <div className="box col m w-full" style={{ maxWidth: '20em' }}>
-                        <AppBoxs.Info data={data} />
-                        <AppBoxs.Versions data={data} type={type} set={(e) => set({ ...data, ...e })} />
+                        <Info data={data} />
+                        <Versions data={data} type={type} set={(e) => set({ ...data, ...e })} />
                     </div>
                 </motion.div>
             </AnimatePresence>
