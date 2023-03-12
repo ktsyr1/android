@@ -36,7 +36,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className='box p j w-full' style={{ direction: 'ltr', backgroundColor: 'var(--colorDark)' }}>
-                <p className='p-0'>   2021 ©PeskTop جميع الحقوق محفوظة</p>
+                <p className='p-0'>   2023 ©PeskTop جميع الحقوق محفوظة</p>
             </div>
         </footer>
     )
