@@ -1,0 +1,13 @@
+name: Update Project
+on: push
+
+jobs:
+  update_project:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: MrSquaare/ssh-setup-action@v2
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          private-key: ${{ secrets.ID_RSA }}
+      - run: |
+          ssh root@88.198.67.122 "cd /var/www/android/one/android/android/ && git fetch origin && git pull && pm2 stop android && npm run build && pm2 start android"
