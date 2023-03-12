@@ -10,4 +10,4 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           private-key: ${{ secrets.ID_RSA }}
       - run: |
-          ssh root@88.198.67.122 "cd /var/www/android/one/android/android/ && git fetch origin && git pull origin main && pm2 stop android && pm2 restart index && npm run build && pm2 start android "
+          ssh root@88.198.67.122 "cd /var/www/android/one/android/android/ && git fetch origin && git pull origin main && pm2 stop android && npm i && npm run build && cd ./micro/ && npm i && pm2 start android && pm2 restart index"
