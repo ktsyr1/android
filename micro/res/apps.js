@@ -77,12 +77,10 @@ export class AppServies {
     }
     static download = async (req, res) => {
         let { headers, params } = req
-        let { client, clientJSON, sercet } = process.env
-        // console.log(JSON.parse(clientJSON))
+        let { client, sercet } = process.env
         if (headers.referer === client) {
             let { token } = params
             try {
-
                 let { expiresIn, path } = jwt.verify(token, sercet)
                 let out = expiresIn + 1000 * 60 * 60 * 24
 
