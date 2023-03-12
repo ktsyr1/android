@@ -16,44 +16,4 @@
     search // البحث 
 ]
 ```
-
-```js 
-class Nasb {
-
-    constructor(name, nameOthers, children, username) {
-        this.name = name
-        this.nameOthers = nameOthers
-        this.children = children
-        this.username = username
-    }
-
-}
-```
-## web development
-- stacks frontend
-    - react
-    - angular
-    - vue
-    - wordpress themes
-- stacks backend
-    - nodejs (expressjs)
-    - nodejs (nestjs)
-    - python  (flask)
-    - python (django)
-    - php (wordpress)
-    - php (larvel)
-    - go (frish)
-    - c# (asp.net)
-    - java (Spring)
-    - Ruby on Rails
-- fullstacks
-    - MERN
-    - MEVN
-    - MEAN
-    - PERN
-    - LAMP
-    - ASP.NET
-    - Ruby on Rails
-    - django py
-    - flask py
-
+ 
