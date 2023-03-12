@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy": "git add . && git commit -m 'UpdateCommitAuto' && git pull origin main",
+    "deploy": "git add . && git commit -m 'UpdateCommitAuto' && git push origin  ",
     "lint": "next lint"
   },
   "dependencies": {
