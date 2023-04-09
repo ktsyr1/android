@@ -3,7 +3,7 @@
 
 /node_modules/**
 /public/**
-# /processing/**
+/processing/**
 package-lock.json 
 .env
 .env.example
