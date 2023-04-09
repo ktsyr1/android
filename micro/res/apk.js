@@ -46,7 +46,7 @@ export async function AddApp(req, res) {
 
         res.status(200).json({ ok });
     } catch (error) {
-        res.status(404).json({ msg: '😁', error });
+        res.status(404).json({ msg: '😁', });
 
     }
 }
